@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<!-- saved from url=(0181)file:///C:/Users/Acer/Desktop/%D1%80%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5%D1%88%D0%BA%D0%B0/%D0%98%D0%B2%D0%B0%D0%BD%20%D0%95%D0%BC%D0%B5%D0%BB%D1%8C%D1%8F%D0%BD%D0%BE%D0%B2%2021%2008.html -->
 <html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Иван Емельянов - опыт и кейсы</title>
-    <!-- Open Graph / Соцсети -->
 <meta property="og:title" content="Иван Емельянов — CV" />
 <meta property="og:description" content="Резюме, проекты и кейсы проектного инженера, системного аналитика и методолога." />
 <meta property="og:image" content="https://wgzzik.github.io/cv Emelyanov.jpg" />
 <meta property="og:url" content="https://wgzzik.github.io/" />
 <meta name="twitter:card" content="summary_large_image" />
     <style>
-        /* Сброс и базовые стили */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -47,7 +39,11 @@
             color: #ffffff;
         }
 
-        /* Блоки с анимацией */
+.h2-title {
+    font-size: 40px;
+    font-weight: 700;
+}
+
         .scroll-block {
             padding: 30px 35px;
             border-radius: 12px;
@@ -58,292 +54,179 @@
             transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
             position: relative;
         }
+        .scroll-block.visible { opacity: 1; transform: translateY(0); }
 
-        .scroll-block.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .block-strength { background: linear-gradient(145deg, #2c4232, #1f3324); border-left: 6px solid #4caf50; }
+        .block-weakness-mid { background: linear-gradient(145deg, #442d2d, #332222); border-left: 6px solid #e57373; }
+        .block-neutral { background: linear-gradient(145deg, #2a2a2a, #1a1a1a); border-left: 6px solid #7f8c8d; }
 
-        .block-strength {
-            background: linear-gradient(145deg, #2c4232, #1f3324);
-            border-left: 6px solid #4caf50;
+
+        .final-block {
+            background: linear-gradient(145deg, #1f1f1f, #111111);
+            border-left: 6px solid #8a9499;
         }
-        .block-weakness-mid {
-            background: linear-gradient(145deg, #442d2d, #332222);
-            border-left: 6px solid #e57373;
-        }
-        .block-neutral {
-            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-            border-left: 6px solid #7f8c8d;
-        }
+        .final-block .block-header { color: #a8b0b5; }
+        .final-block .icon-circle { background: rgba(138, 148, 153, 0.15); }
 
         .block-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            font-size: 22px;
-            font-weight: 600;
+            display: flex; align-items: center; gap: 15px;
+            margin-bottom: 15px; font-size: 22px; font-weight: 600;
         }
 
+.final-muted {
+    color: #5c6368;   /* тёмно-серый, темнее основного текста */
+    font-size: 14px;  /* опционально: чуть мельче, чтобы читалось как "ремарка" */
+}
+
+.final-muted::before {
+    color: rgba(255, 255, 255, 0.2);
+}
         .icon-circle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            font-size: 20px;
+            display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1); font-size: 20px;
         }
 
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
+        ul { list-style: none; padding-left: 0; }
         ul li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            font-size: 16px;
+            position: relative; padding-left: 25px; margin-bottom: 12px;
+            line-height: 1.5; font-size: 16px;
         }
         ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: rgba(255, 255, 255, 0.5);
-            font-weight: bold;
+            content: '▸'; position: absolute; left: 0;
+            color: rgba(255, 255, 255, 0.5); font-weight: bold;
         }
 
-        .section-divider {
-            width: 100%;
-            height: 2px;
-            background: #444;
-            margin: 15px 0 10px 0;
-        }
+        .section-divider { width: 100%; height: 2px; background: #444; margin: 15px 0 10px 0; }
 
-        /* ============================================== */
-        /* СТИЛИ ДЛЯ ГОРИЗОНТАЛЬНОГО СКРОЛЛА (Общие) */
-        /* ============================================== */
-
+        /* ============ Карусель ============ */
         .cases-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            position: relative; width: 100%; overflow: hidden;
+            border-radius: 12px; margin-bottom: 10px;
         }
-
         .cases-scroll-container {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
+            display: flex; gap: 20px; overflow-x: auto;
             padding: 10px 5px 20px 5px;
             scroll-snap-type: x mandatory;
-            scrollbar-width: thin;
-            scrollbar-color: #666 #333;
+            scrollbar-width: thin; scrollbar-color: #666 #333;
         }
-
-        .cases-scroll-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .cases-scroll-container::-webkit-scrollbar-track {
-            background: #333;
-            border-radius: 4px;
-        }
-        .cases-scroll-container::-webkit-scrollbar-thumb {
-            background: #666;
-            border-radius: 4px;
-        }
-        .cases-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #888;
-        }
+        .cases-scroll-container::-webkit-scrollbar { height: 8px; }
+        .cases-scroll-container::-webkit-scrollbar-track { background: #333; border-radius: 4px; }
+        .cases-scroll-container::-webkit-scrollbar-thumb { background: #666; border-radius: 4px; }
+        .cases-scroll-container::-webkit-scrollbar-thumb:hover { background: #888; }
 
         .case-card {
             flex: 0 0 320px;
             background: #252525;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            padding: 20px; border-radius: 10px;
+            display: flex; flex-direction: column; gap: 15px;
             scroll-snap-align: start;
-            opacity: 1 !important;
-            transform: none !important;
+            opacity: 1 !important; transform: none !important;
         }
-
-        .case-card-header {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .case-card ul {
-            font-size: 14px;
-            flex-grow: 1;
-        }
-        .case-card ul li {
-            margin-bottom: 8px;
-            padding-left: 18px;
-        }
-        .case-card ul li::before {
-            font-size: 12px;
-        }
+        .case-card-header { font-size: 18px; font-weight: 600; margin-bottom: 5px; }
+        .case-card ul { font-size: 14px; flex-grow: 1; }
+        .case-card ul li { margin-bottom: 8px; padding-left: 18px; }
+        .case-card ul li::before { font-size: 12px; }
 
         .case-card-img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background: #1a1a1a;
-            cursor: pointer;
+            width: 100%; height: 240px; object-fit: cover;
+            border-radius: 6px; border: 1px solid #444;
+            background: #1a1a1a; cursor: pointer;
             transition: opacity 0.2s ease;
         }
-        .case-card-img:hover {
-            opacity: 0.85;
-        }
+        .case-card-img:hover { opacity: 0.85; }
 
-        .case-card-year {
-            font-size: 13px;
-            color: #888;
-            margin-top: auto;
-        }
+        .case-card-year { font-size: 13px; color: #888; margin-top: auto; }
 
         .scroll-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: #fff;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            font-size: 20px;
-            transition: background 0.2s;
-            display: none;
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.7); color: #fff; border: none;
+            width: 40px; height: 40px; border-radius: 50%;
+            cursor: pointer; z-index: 10; font-size: 20px;
+            transition: background 0.2s; display: none;
         }
-        .scroll-btn:hover {
-            background: #000;
-        }
-        .scroll-btn-left {
-            left: 5px;
-        }
-        .scroll-btn-right {
-            right: 5px;
-        }
+        .scroll-btn:hover { background: #000; }
+        .scroll-btn-left { left: 5px; }
+        .scroll-btn-right { right: 5px; }
 
-        @media (min-width: 768px) {
-            .scroll-btn {
-                display: block;
-            }
-        }
-        @media (max-width: 400px) {
-            .case-card {
-                flex: 0 0 280px;
-            }
-        }
+        @media (min-width: 768px) { .scroll-btn { display: block; } }
+        @media (max-width: 400px) { .case-card { flex: 0 0 280px; } }
 
-        /* ============================================== */
-        /* СТИЛИ ДЛЯ ЛАЙТБОКСА (ПРЕДПРОСМОТРЩИКА) */
-        /* ============================================== */
+        /* ============ Лайтбокс ============ */
         .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.92); backdrop-filter: blur(4px);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease; padding: 20px;
         }
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
+        .lightbox-overlay.active { opacity: 1; visibility: visible; }
         .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            max-width: 90%; max-height: 90%; object-fit: contain;
+            border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
             transform: scale(0.95);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .lightbox-overlay.active img {
-            transform: scale(1);
-        }
+
+.lightbox-overlay video {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+        .lightbox-overlay.active img { transform: scale(1); }
         .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            font-size: 40px;
-            color: #fff;
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-weight: 300;
-            transition: transform 0.2s ease, color 0.2s ease;
-            line-height: 1;
+            position: absolute; top: 25px; right: 35px;
+            font-size: 40px; color: #fff; cursor: pointer;
+            background: none; border: none; font-weight: 300;
+            transition: transform 0.2s ease, color 0.2s ease; line-height: 1;
         }
-        .lightbox-close:hover {
-            transform: rotate(90deg);
-            color: #aaa;
-        }
+        .lightbox-close:hover { transform: rotate(90deg); color: #aaa; }
 
         @media (max-width: 768px) {
-            .container {
-                max-width: 100%;
-            }
-            .scroll-block {
-                padding: 20px 18px;
-            }
-            .block-header {
-                font-size: 18px;
-            }
-            ul li {
-                font-size: 14px;
-            }
-            h2 {
-                font-size: 24px;
-            }
+            .container { max-width: 100%; }
+            .scroll-block { padding: 20px 18px; }
+            .block-header { font-size: 18px; }
+            ul li { font-size: 14px; }
+            h2 { font-size: 24px; }
         }
         @media (max-width: 500px) {
-            body {
-                padding: 20px 10px;
-            }
-            .scroll-block {
-                padding: 16px 14px;
-            }
-            .block-header {
-                font-size: 16px;
-                gap: 10px;
-            }
-            .icon-circle {
-                width: 32px;
-                height: 32px;
-                font-size: 16px;
-            }
-            ul li {
-                font-size: 13px;
-                padding-left: 20px;
-            }
-            .case-card {
-                flex: 0 0 260px;
-            }
+            body { padding: 20px 10px; }
+            .scroll-block { padding: 16px 14px; }
+            .block-header { font-size: 16px; gap: 10px; }
+            .icon-circle { width: 32px; height: 32px; font-size: 16px; }
+            ul li { font-size: 13px; padding-left: 20px; }
+            .case-card { flex: 0 0 260px; }
         }
+
+        /* ============ Тематические акценты блоков кейсов ============ */
+        /* Блок 1 — самый яркий teal */
+        .accent-1 .block-header { color: #2ee6c5; }
+        .accent-1 .case-card { border-left: 6px solid #2ee6c5; }
+        .accent-1 .case-card-header { color: #2ee6c5; }
+        .accent-1 .icon-circle { background: rgba(46, 230, 197, 0.15); }
+
+        /* Блок 2 — teal средней яркости */
+        .accent-2 .block-header { color: #56b8a8; }
+        .accent-2 .case-card { border-left: 6px solid #56b8a8; }
+        .accent-2 .case-card-header { color: #56b8a8; }
+        .accent-2 .icon-circle { background: rgba(86, 184, 168, 0.15); }
+
+        /* Блок 3 — приглушённый teal */
+        .accent-3 .block-header { color: #6f9d93; }
+        .accent-3 .case-card { border-left: 6px solid #6f9d93; }
+        .accent-3 .case-card-header { color: #6f9d93; }
+        .accent-3 .icon-circle { background: rgba(111, 157, 147, 0.15); }
+
+        /* Блок 4 — самый блёклый teal */
+        .accent-4 .block-header { color: #7c9a93; }
+        .accent-4 .case-card { border-left: 6px solid #5f7a74; }
+        .accent-4 .case-card-header { color: #7c9a93; }
+        .accent-4 .icon-circle { background: rgba(124, 154, 147, 0.12); }
     </style>
 </head>
 <body>
@@ -352,19 +235,18 @@
 
         <!-- ЗАГЛАВНАЯ ИЛЛЮСТРАЦИЯ -->
         <div class="scroll-block visible" style="background: transparent; border: none; box-shadow: none; padding: 0; text-align: center; opacity: 1; transform: none;">
-            <img src="cv Emelyanov.jpg" alt="Таймлайн" style="max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #444; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <img src="cv Emelyanov grey.jpg" alt="Таймлайн" style="max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #444; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
             <p style="margin-top: 10px; color: #888; font-size: 13px;">Таймлайн</p>
         </div>
 
         <div class="section-divider"></div>
 
         <!-- ============================ -->
-        <!-- БЛОК SWOT -->
+        <!-- SWOT -->
         <!-- ============================ -->
         <div class="container" style="gap: 30px;">
-            <h2 style="margin-top: 0;">a la SWOT</h2>
+            <h2 class="h2-title" style="margin-top: 0;">↓ a la SWOT ↓</h2>
 
-            <!-- СИЛЬНЫЕ СТОРОНЫ (сокращённые) -->
             <div class="scroll-block block-strength visible">
                 <div class="block-header">
                     <div class="icon-circle">✅</div>
@@ -380,7 +262,6 @@
                 </ul>
             </div>
 
-            <!-- СЛАБЫЕ СТОРОНЫ (сокращённые) -->
             <div class="scroll-block block-weakness-mid visible">
                 <div class="block-header">
                     <div class="icon-circle">⚠️</div>
@@ -388,15 +269,12 @@
                 </div>
                 <ul>
                     <li><strong>Слабое место — переговоры в условиях неопределённости.</strong> Склонен брать паузу, а не давить. Осторожный, не нахрапистый.</li>
-                    <li><strong>Юридическая подготовка слабая.</strong> При работе с контрактами — роль «передатчика», а не эксперта. Часто упускаю детали формулировок.</li>
+                    <li><strong>Юридическая подготовка слабая.</strong> При работе с контрактами — роль "передатчика", а не эксперта. Часто упускаю детали формулировок.</li>
                     <li><strong>Широкий, но поверхностный кругозор.</strong> Глубокой отраслевой экспертизы нет.</li>
                     <li><strong>Не продажник.</strong> Не умею легко вовлекать средства заказчиков в оборот компании.</li>
                 </ul>
             </div>
 
-            <!-- ============================ -->
-            <!-- БЛОК: ПРОФИЛЬ ПО АДИЗЕСУ -->
-            <!-- ============================ -->
             <div class="scroll-block block-neutral visible">
                 <div class="block-header">
                     <div class="icon-circle">📊</div>
@@ -411,182 +289,108 @@
                 <ul>
                     <li><strong>Код профиля:</strong> <span style="color:#ce93d8;">pAeI</span> — ярко выраженный <strong>Администратор-Интегратор</strong>.</li>
                     <li><strong>Сильная сторона:</strong> построение систем, порядок, структура, регламенты. Умение объединять команду и сглаживать конфликты.</li>
-                    <li><strong>Зона роста:</strong> ориентация на «результат руками» (P) и агрессивное продвижение идей (E) — не ведущие роли.</li>
+                    <li><strong>Зона роста:</strong> ориентация на "результат руками" (P) и агрессивное продвижение идей (E) — не ведущие роли.</li>
                     <li><strong>Идеальная роль:</strong> методолог, системный аналитик, руководитель проектов, внутренний архитектор процессов.</li>
                 </ul>
             </div>
-
         </div>
 
-        <!-- ============================ -->
-        <!-- БЛОК КЕЙСОВ (СОФТ) -->
-        <!-- ============================ -->
-        <div class="container" style="gap: 10px;">
-            <h2 style="margin-top: 0;">Кейсы / Реализованные проекты</h2>
+        <!-- ============================================================ -->
+        <!-- БЛОК 1. ЗАГОЛОВОК БЛОКА 1 · 2024–2026 -->
+        <!-- ============================================================ -->
+        <div class="container accent-1" style="gap: 10px;">
+        <div class="container accent-1" style="gap: 10px;">
+            <h2 class="h2-title" style="margin-top: 0;"><br>↓ КЕЙСЫ И ОПЫТ ↓</h2>
+        <div class="container accent-1" style="gap: 10px;">
+            <h2 style="margin-top: 0;">BI и продуктовая аналитика в управлении проектами</h2>
+            <p style="text-align: center; color: #999; margin-bottom: 0px; font-size: 14px;">2024 — 2026</p>
 
             <div class="cases-wrapper">
-                <button class="scroll-btn scroll-btn-left" onclick="scrollCases(&#39;left&#39;, &#39;casesScroller&#39;)">‹</button>
-                <button class="scroll-btn scroll-btn-right" onclick="scrollCases(&#39;right&#39;, &#39;casesScroller&#39;)">›</button>
-
-                <div class="cases-scroll-container" id="casesScroller">
-                    <!-- Кейс 1 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">📄 Генератор договоров</div>
+                <button class="scroll-btn scroll-btn-left" onclick="scrollCases('left', 'scroller1')">‹</button>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollCases('right', 'scroller1')">›</button>
+                <div class="cases-scroll-container" id="scroller1">
+                    <!-- Кейс: Атрибутирование для ABC-анализа -->
+                    <div class="case-card">
+                        <div class="case-card-header">📊 ABC + аттрибутирование</div>
                         <ul>
-                            <li><strong>Задача:</strong> Упростить ручной труд, уменьшить число ошибок при подготовке проектов Договоров.</li>
-                            <li><strong>Решение:</strong> Выгрузка из SAP мастер-даты (реквизитов Заказчиков), компоновка одного из шести сценариев (товары, услуги, рамочные), VBA + MS Word.</li>
-                        </ul>
-                        <img src="img1.jpg" class="case-card-img" alt="Договоры">
-                        <div class="case-card-year">2014</div>
-                    </div>
-                    <!-- Кейс 2 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">📊 Калькулятор КП</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Автоматизация расчёта стоимости сервисных работ.</li>
-                            <li><strong>Решение:</strong> База "работ" из документации сервисного отдела вынесена в коммерческий модуль, расчёт трудовых часов, дней, перелётов, проживаний, расчет маржи, выгрузка PDF для Заказчика.</li>
-                        </ul>
-                        <img src="img2.jpg" class="case-card-img" alt="КП">
-                        <div class="case-card-year">2015</div>
-                    </div>
-                    <!-- Кейс 3 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">🏟️ Рабочее место администратора спортивного объекта</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Расписание занятости оборудования, специалистов, расход ресурса оборудования, расчёт восполнения расходных материалов, ежемесячная отчётность для руководства.</li>
-                            <li><strong>Решение:</strong> VBA + MS Excel + Pivot Charts, простая локальная DIY-ERP.</li>
-                        </ul>
-                        <img src="img3.jpg" class="case-card-img" alt="Спорт">
-                        <div class="case-card-year">2017</div>
-                    </div>
-                    <!-- Кейс 4 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">📝 Опросный лист</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Замена хаотичных входящих данных на структурированную форму.</li>
-                            <li><strong>Решение:</strong> Форма с жесткой валидацией полей (нельзя пропустить обязательное). После заполнения — двуязычная таблица для отправки зарубежным поставщикам оборудования.</li>
-                        </ul>
-                        <img src="img4.jpg" class="case-card-img" alt="Опросный лист">
-                        <div class="case-card-year">2018</div>
-                    </div>
-                    <!-- Кейс 5 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">🔩 Обработчик КД</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Обработка 3d моделей для подготовки комплектов КД для размещения в производства.</li>
-                            <li><strong>Решение:</strong> Скрипт анализирует выгрузку из 3d CAD, проверяет наличие файлов нужных форматов, сортирует файлы по материалам, по способам обработки и раскладывает по папкам для разных производств.</li>
-                        </ul>
-                        <img src="img5.jpg" class="case-card-img" alt="КД">
-                        <div class="case-card-year">2019</div>
-                    </div>
-                    <!-- Кейс 6 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">📈 Планирование в Sheets</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Три разных интерфейса для продавца, кладовщика и производственника.</li>
-                            <li><strong>Решение:</strong> Продавец вносит заказы, кладовщик списывает/отмечает остатки, а производственник видит только актуальные задачи к изготовлению с учетом кратности и срочности.</li>
-                        </ul>
-                        <img src="img6.jpg" class="case-card-img" alt="Google Sheets">
-                        <div class="case-card-year">2018</div>
-                    </div>
-
-                    <!-- Кейс 7 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">⚙️ Стенд сборки</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Сборка боковых стёкол автомобилей, подготовка (так и не наступившего) производства следующего модельного ряда.</li>
-                            <li><strong>Решение:</strong> Конструкция стенда, техпроцесс работы оборудования, обеспечение времени цикла, соблюдение норм эргономики и безопаности.</li>
-                        </ul>
-                        <img src="img10.jpg" class="case-card-img" alt="ABC">
-                        <div class="case-card-year">2021</div>
-                    </div>
-
-                    <!-- Кейс 8 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">📊 Атрибутирование для ABC-анализа</div>
-                        <ul>
-                            <li><strong>Задача:</strong> Выявление групп изделий для дооснащения цеха и расширения линейки.</li>
-                            <li><strong>Решение:</strong> На основе комбинированных данных о продажах полуавтоматический сбор, атрибутирование и построение дашбордов для упрощения принятия решений.</li>
+                            <li><strong>Задача:</strong> расширение линейки продукции, определение инвестиций в оборудование.</li>
+                            <li><strong>Решение:</strong> Комбинация данных о продажах, сбор, атрибутирование, дашборды.</li>
                         </ul>
                         <img src="img7.jpg" class="case-card-img" alt="ABC">
                         <div class="case-card-year">2024</div>
                     </div>
-                    <!-- Кейс 9 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">🗺️ Поиск предприятий</div>
+                    <!-- Кейс: Поиск предприятий -->
+                    <div class="case-card">
+                        <div class="case-card-header">🗺️ Поиск предприятий</div>
                         <ul>
-                            <li><strong>Задача:</strong> Определение потенциала сотрудничества.</li>
-                            <li><strong>Решение:</strong> SQL-запросы к открытым источникам данных о предприятиях и правительственных программах + собственные данные + визуализация.</li>
+                            <li><strong>Задача:</strong> Определение потенциала сотрудничества + оценка статусов контрагентов.</li>
+                            <li><strong>Решение:</strong> SQL к открытым источникам данных о предприятиях, инвестиционных программах + визуализация.</li>
                         </ul>
                         <img src="img8.jpg" class="case-card-img" alt="Карта">
                         <div class="case-card-year">2025</div>
                     </div>
-
-                    <!-- Кейс 10 -->
-                    <div class="case-card" style="border-left: 6px solid #81c784;">
-                        <div class="case-card-header" style="color: #81c784;">⚙️ Конфигуратор номенклатуры</div>
+                    <!-- Кейс: Конфигуратор номенклатуры -->
+                    <div class="case-card">
+                        <div class="case-card-header">⚙️ Конфигуратор</div>
                         <ul>
                             <li><strong>Задача:</strong> Объединение разрозненных данных о номенклатуре из ТУ, служебных записок, реестров и каталогов.</li>
-                            <li><strong>Решение:</strong> Инструмент систематизирует характеристики, автоматически комплектует доп. аксессуары и генерирует данные для дальнейших этапов.</li>
+                            <li><strong>Решение:</strong> Систематизация характеристик, комплектация, подготовка данных для CPQ.</li>
                         </ul>
                         <img src="img9.jpg" class="case-card-img" alt="Конфигуратор">
                         <div class="case-card-year">2026</div>
                     </div>
+
+                    <!-- Кейс: Среда для работы -->
+                    <div class="case-card">
+                        <div class="case-card-header">📊 Дооснащение</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Управление событиями, отчётность сверх штатного функционала корпоративных систем.</li>
+                            <li><strong>Решение:</strong> дополнительная рабочая среда, закрывающая потребности.</li>
+                        </ul>
+                        <img src="img12.jpg" class="case-card-img" alt="Канбан Канбаныч майндкарты дашборды">
+                        <div class="case-card-year">2026</div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
 
         <div class="section-divider" style="margin-top: 30px;"></div>
 
-        <!-- ============================================== -->
-        <!-- БЛОК: РЕАЛИЗАЦИЯ ПРОИЗВОДСТВЕННО-СКЛАДСКОГО ПРОСТРАНСТВА + УПРАВЛЕНИЕ ПРОДУКТОВЫМ НАПРАВЛЕНИЕМ -->
-        <!-- ============================================== -->
-        <div class="container" style="gap: 10px;">
-            <h2 style="margin-top: 0;">Реализация производственно-складского пространства + управление продуктовым направлением</h2>
-            <p style="text-align: center; color: #999; margin-bottom: 0px; font-size: 14px;">2023 — 2025</p>
+        <!-- ============================================================ -->
+        <!-- БЛОК 2. ЗАГОЛОВОК БЛОКА 2 · 2022–2025 -->
+        <!-- ============================================================ -->
+        <div class="container accent-2" style="gap: 10px;">
+            <h2 style="margin-top: 0;">Управление продуктом и производственной площадкой (стартап головной организации)</h2>
+            <p style="text-align: center; color: #999; margin-bottom: 0px; font-size: 14px;">2022 — 2025</p>
 
             <div class="cases-wrapper">
-                <button class="scroll-btn scroll-btn-left" onclick="scrollCases(&#39;left&#39;, &#39;shopScroller&#39;)">‹</button>
-                <button class="scroll-btn scroll-btn-right" onclick="scrollCases(&#39;right&#39;, &#39;shopScroller&#39;)">›</button>
+                <button class="scroll-btn scroll-btn-left" onclick="scrollCases('left', 'scroller2')">‹</button>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollCases('right', 'scroller2')">›</button>
+                <div class="cases-scroll-container" id="scroller2">
 
-                <div class="cases-scroll-container" id="shopScroller">
-
-                    <!-- Фото 1 -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">🏗️ Организация площадки</div>
+                    <div class="case-card">
+                        <div class="case-card-header">🎥 Product-management</div>
                         <ul>
+                            <li>Маркетинговые, патентные, эксплуатационные исследования.</li>
+                            <li>Конструирование, прототипы, испытания.</li>
+                        </ul>
+                        <video src="shop5.mp4" class="case-card-img" muted playsinline preload="metadata"></video>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">🏗️ Организация площадки</div>
+                        <ul>
+                            <li>Определение контролируемых параметров и ограничений.</li>
                             <li>Поиск и подбор помещения.</li>
                             <li>Модернизация инженерных сетей.</li>
-                            <li>Определение контролиуемых параметров и ограничений.</li>
                         </ul>
                         <img src="imgshop1.jpg" class="case-card-img" alt="Площадка 1">
                     </div>
 
-                    <!-- Видео 4 (Product-management) -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">🎥 Product-management, управление продуктовой линейкой</div>
-                        <ul>
-                            <li>Маркетинговые, патентные, эксплуатационные исследования.</li>
-                            <li>Управление конструкторским подразделением, прототипы, испытания.</li>
-                            <li>Взаимодействие с внутренними и внешними контрагентами.</li>
-                        </ul>
-                        <video src="shop5.mp4" class="case-card-img" muted="" playsinline="" preload="metadata"></video>
-                    </div>
-
-                    <!-- Фото 2 -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">📐 Управление технологией и продуктом</div>
-                        <ul>
-                            <li>Организация АБК / офисных рабочих мест.</li>
-                            <li>Управление конструкторским подразделением + Product-managent.</li>
-                            <li>Организация процессов снабжения и обеспечения.</li>
-                        </ul>
-                        <img src="imgshop2.jpg" class="case-card-img" alt="Площадка 2">
-                    </div>
-
-                    <!-- Фото 3 -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">✓ Запуск площадки в работу</div>
+                    <div class="case-card">
+                        <div class="case-card-header">✓ Запуск площадки в работу</div>
                         <ul>
                             <li>"День первой стружки".</li>
                             <li>Первые выходы оборудования из строя.</li>
@@ -595,132 +399,297 @@
                         <img src="imgshop3.jpg" class="case-card-img" alt="Площадка 3">
                     </div>
 
-                    <!-- Видео 1 (Станочный парк) -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">🎥 Станочный парк</div>
+                    <div class="case-card">
+                        <div class="case-card-header">🎥 Станочный парк</div>
                         <ul>
                             <li>Определение требований к оборудованию в соответствии с характеристиками продукта.</li>
                             <li>Внутрицеховая логистика.</li>
                         </ul>
-                        <video src="shop1.mp4" class="case-card-img" muted="" playsinline="" preload="metadata"></video>
+                        <video src="shop1.mp4" class="case-card-img" muted playsinline preload="metadata"></video>
                     </div>
 
-                    <!-- Видео 2 (Решение вопросов) -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">🎥 Решение вопросов в широком диапазоне</div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">🎥 Оптимизация площадей</div>
                         <ul>
-                            <li>Борьба с дождями, борьба с жарой.</li>
-                            <li>Борьба с застройщиком, борьба с подрядчиками.</li>
-                            <li>... и другое.</li>
+                            <li>Обустройство пространства для гибкого применения.</li>
+                            <li>Оперативная адаптация.</li>
                         </ul>
-                        <video src="shop2.mp4" class="case-card-img" muted="" playsinline="" preload="metadata"></video>
+                        <video src="shop3.mp4" class="case-card-img" muted playsinline preload="metadata"></video>
                     </div>
 
-                    <!-- Видео 3 (Оптимизация площадей) -->
-                    <div class="case-card" style="border-left: 6px solid #64b5f6;">
-                        <div class="case-card-header" style="color: #64b5f6;">🎥 Оптимизация используемых площадей</div>
+                    <div class="case-card">
+                        <div class="case-card-header">🎥 Любые вопросы</div>
                         <ul>
-                            <li>Освобождение пространств для манёвров техникой и установки дополнительных рабочих постов.</li>
+                            <li>Борьба с дождями и с жарой.</li>
+                            <li><s>Борьба</s> Взаимодейтвие с застройщиком и с подрядчиками.</li>
+                            <li>... другое.</li>
                         </ul>
-                        <video src="shop3.mp4" class="case-card-img" muted="" playsinline="" preload="metadata"></video>
+                        <video src="shop2.mp4" class="case-card-img" muted playsinline preload="metadata"></video>
                     </div>
+
 
                 </div>
             </div>
         </div>
 
         <div class="section-divider" style="margin-top: 30px;"></div>
+
+        <!-- ============================================================ -->
+        <!-- БЛОК 3. ЗАГОЛОВОК БЛОКА 3 · 2019–2022 -->
+        <!-- ============================================================ -->
+        <div class="container accent-3" style="gap: 10px;">
+            <h2 style="margin-top: 0;">Управление разработками (оборудование для промышленных производств)</h2>
+            <p style="text-align: center; color: #999; margin-bottom: 0px; font-size: 14px;">2019 — 2022</p>
+
+            <div class="cases-wrapper">
+                <button class="scroll-btn scroll-btn-left" onclick="scrollCases('left', 'scroller3')">‹</button>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollCases('right', 'scroller3')">›</button>
+                <div class="cases-scroll-container" id="scroller3">
+
+                    
+
+                    <div class="case-card">
+                        <div class="case-card-header">⚙️ Сборочное оборудование</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Автоматизация сборочных операций, позиционирование заготовок, управление качеством, соблюдение производительности.</li>
+                            <li><strong>Решение:</strong> Конструкции стендов, оснастки, техпроцесс работы оборудования, обеспечение времени цикла, соблюдение норм эргономики и безопасности.</li>
+                        </ul>
+                        <img src="img10.jpg" class="case-card-img" alt="Стенд сборки">
+                        <div class="case-card-year">2021</div>
+                    </div>
+
+
+                    <div class="case-card">
+                        <div class="case-card-header">⚙️ Системы перемещения</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Автоматическое и полуавтоматическое перемещение заготовок и готовой продукции.</li>
+                            <li><strong>Решение:</strong> Конструкции манипуляторов, грузозахватов, систем перемещения, техпроцессы, учёт ограничений, соблюдение норм эргономики и безопасности.</li>
+                        </ul>
+                        <img src="img13.jpg" class="case-card-img" alt="Манипулятор">
+                        <div class="case-card-year">2020</div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">⚙️ Безопасность оборудования</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Повышение степени безопасности существующего и проектируемого оборудования.</li>
+                            <li><strong>Решение:</strong> От простых механических ограждений типа "забор" до сложных периметров безопасности на базе машинного зрения, лидаров, safety-контроллеров, ...</li>
+                        </ul>
+                        <img src="img11.jpg" class="case-card-img" alt="Манипулятор">
+                        <div class="case-card-year">2022</div>
+                    </div>
+
+<div class="case-card">
+                        <div class="case-card-header">🔩 Обработчик КД</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Обработка 3d моделей для подготовки комплектов КД для размещения в производства.</li>
+                            <li><strong>Решение:</strong> Скрипт анализирует выгрузку из 3d CAD, проверяет наличие файлов нужных форматов, сортирует файлы по материалам, по способам обработки и раскладывает по папкам для разных производств.</li>
+                        </ul>
+                        <img src="img5.jpg" class="case-card-img" alt="КД">
+                        <div class="case-card-year">2019</div>
+                    </div>
+
+
+                    <!-- === МЕСТО ДЛЯ НОВЫХ КЕЙСОВ 2019–2022 === -->
+                    <!-- Вставляй сюда карточки в формате:
+                    <div class="case-card">
+                        <div class="case-card-header">ЭМОДЗИ Название</div>
+                        <ul>
+                            <li><strong>Задача:</strong> ...</li>
+                            <li><strong>Решение:</strong> ...</li>
+                        </ul>
+                        <img src="файл.jpg" class="case-card-img" alt="...">
+                        <div class="case-card-year">2020</div>
+                    </div>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <div class="section-divider" style="margin-top: 30px;"></div>
+
+        <!-- ============================================================ -->
+        <!-- БЛОК 4. ЗАГОЛОВОК БЛОКА 4 · 2012–2021 -->
+        <!-- ============================================================ -->
+        <div class="container accent-4" style="gap: 10px;">
+            <h2 style="margin-top: 0;">Автоматизация офисных процессов</h2>
+            <p style="text-align: center; color: #999; margin-bottom: 0px; font-size: 14px;">2012 — 2021</p>
+
+            <div class="cases-wrapper">
+                <button class="scroll-btn scroll-btn-left" onclick="scrollCases('left', 'scroller4')">‹</button>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollCases('right', 'scroller4')">›</button>
+                <div class="cases-scroll-container" id="scroller4">
+
+                    <div class="case-card">
+                        <div class="case-card-header">📄 Генератор договоров</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Упростить ручной труд, уменьшить число ошибок при подготовке проектов Договоров.</li>
+                            <li><strong>Решение:</strong> Выгрузка из SAP мастер-даты (реквизитов Заказчиков), компоновка одного из шести сценариев (товары, услуги, рамочные), VBA + MS Word.</li>
+                        </ul>
+                        <img src="img1.jpg" class="case-card-img" alt="Договоры">
+                        <div class="case-card-year">2014</div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">📊 Калькулятор КП</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Автоматизация расчёта стоимости сервисных работ.</li>
+                            <li><strong>Решение:</strong> База "работ" из документации сервисного отдела вынесена в коммерческий модуль, расчёт трудовых часов, дней, перелётов, проживаний, расчёт маржи, выгрузка PDF для Заказчика.</li>
+                        </ul>
+                        <img src="img2.jpg" class="case-card-img" alt="КП">
+                        <div class="case-card-year">2015</div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">🏟️ Рабочее место администратора спортивного объекта</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Расписание занятости оборудования, специалистов, расход ресурса, расчёт восполнения расходников, отчётность.</li>
+                            <li><strong>Решение:</strong> VBA + MS Excel + Pivot Charts, локальная DIY-ERP.</li>
+                        </ul>
+                        <img src="img3.jpg" class="case-card-img" alt="Спорт">
+                        <div class="case-card-year">2017</div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">📝 Опросный лист</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Замена хаотичных входящих данных на структурированную форму.</li>
+                            <li><strong>Решение:</strong> Форма с жёсткой валидацией полей (нельзя пропустить обязательное). После заполнения — двуязычная таблица для отправки зарубежным поставщикам.</li>
+                        </ul>
+                        <img src="img4.jpg" class="case-card-img" alt="Опросный лист">
+                        <div class="case-card-year">2018</div>
+                    </div>
+
+                    <div class="case-card">
+                        <div class="case-card-header">📈 Планирование в Sheets</div>
+                        <ul>
+                            <li><strong>Задача:</strong> Три разных интерфейса для продавца, кладовщика и производственника.</li>
+                            <li><strong>Решение:</strong> Продавец вносит заказы, кладовщик описывает остатки, а производственник видит только актуальные задачи с учётом кратности и срочности.</li>
+                        </ul>
+                        <img src="img6.jpg" class="case-card-img" alt="Google Sheets">
+                        <div class="case-card-year">2018</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================ -->
+        <!-- ФИНАЛЬНЫЙ БЛОК: ПОЗИЦИЯ -->
+        <!-- ============================ -->
+        <div class="container" style="gap: 30px;">
+            <h2 class="h2-title" style="margin-top: 0;"><br>↓ ПОЗИЦИЯ ↓</h2>
+
+            <div class="scroll-block final-block visible">
+                <div class="block-header">
+                </div>
+                <ul>
+                    <li>Моя профессиональная позиция — умножать отдачу, а не просто "продолжать работать". Я вижу, где процессы съедают ресурсы: ручные операции могут отнимать в 4–10 раз больше времени, чем должны, и это не просто неэффективно — это скрытый "налог на бизнес".</li>
+		<li>Меня мотивирует убирать барьеры, из-за которых теряются деньги, силы и мотивация команды. Считаю, что главная ценность специалиста — не в умении нажимать кнопки, а в способности делать процессы умнее. Поэтому я целенаправленно ищу и устраняю "инфокрестьянство": рутину, которая не добавляет ценности, но ежедневно вытягивает ресурсы.</li>
+		<li>Умею отличать задачи с высокой добавленной стоимостью от избыточных операций и предлагаю простые, практичные решения: от стандартизации и пересмотра регламентов до автоматизации. Ищу роль, где смогу системно повышать эффективность и превращать усилия команды в измеримый результат.</li>
+<li class="final-muted">В 2012 году я понял, что офис/завод — это про обмен времени жизни на выживание.<br>В 2017 впервые серьёзно выгорел, с тех пор выгорание - мой "старый знакомый".<br></li>
+<li class="final-muted">В 2017-2019 я пытался сделать "костыльные макросы для экселя" основным видом предпринимательской деятельности, но фиаско я потерпел и не преуспел в этом начинании.<br></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="section-divider" style="margin-top: 30px;"></div>
     </div>
 
-    <!-- Лайтбокс (предпросмотрщик) -->
-    <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">✕</button>
-        <img src="file:///C:/Users/Acer/Desktop/%D1%80%D0%B5%D0%B7%D1%8E%D0%BC%D0%B5%D1%88%D0%BA%D0%B0/%D0%98%D0%B2%D0%B0%D0%BD%20%D0%95%D0%BC%D0%B5%D0%BB%D1%8C%D1%8F%D0%BD%D0%BE%D0%B2%2021%2008.html" alt="Предпросмотр">
-    </div>
+    <!-- Лайтбокс -->
+<div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img id="lightboxImg" src="" alt="Предпросмотр">
+    <video id="lightboxVideo" controls playsinline muted preload="metadata" style="display:none; max-width:90%; max-height:90%; border-radius:8px; box-shadow:0 20px 60px rgba(0,0,0,0.8); border:1px solid rgba(255,255,255,0.1);"></video>
+</div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Анимация появления блоков
+            // Анимация появления
             const blocks = document.querySelectorAll('.scroll-block:not(.case-card)');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
             blocks.forEach(block => observer.observe(block));
 
-            // === ЛАЙТБОКС ДЛЯ КАРТИНОК (игнорируем видео) ===
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = lightbox.querySelector('img');
-            const closeBtn = document.getElementById('lightboxClose');
+// Лайтбокс (картинки и видео)
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightboxImg');
+const lightboxVideo = document.getElementById('lightboxVideo');
+const closeBtn      = document.getElementById('lightboxClose');
 
-            const images = document.querySelectorAll('.case-card-img');
-            images.forEach(el => {
-                el.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    if (el.tagName.toLowerCase() === 'video') return;
-                    const src = el.getAttribute('src');
-                    if (src) {
-                        lightboxImg.src = src;
-                        lightbox.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            });
+document.querySelectorAll('.case-card-img').forEach(el => {
+    el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const src = el.getAttribute('src');
+        if (!src) return;
 
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                document.body.style.overflow = '';
-                setTimeout(() => {
-                    if (!lightbox.classList.contains('active')) {
-                        lightboxImg.src = '';
-                    }
-                }, 300);
-            }
+        const isVideo = el.tagName.toLowerCase() === 'video';
 
-            closeBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
-                    closeLightbox();
-                }
-            });
+        if (isVideo) {
+            // сброс картинки, показываем видео
+            lightboxImg.style.display = 'none';
+            lightboxImg.src = '';
+            lightboxVideo.style.display = 'block';
+            lightboxVideo.src = src;
+            lightboxVideo.muted = true;        // звук по умолчанию выключен
+            lightboxVideo.currentTime = 0;
+            lightboxVideo.play().catch(() => {});
+        } else {
+            // сброс видео, показываем картинку
+            lightboxVideo.pause();
+            lightboxVideo.removeAttribute('src');
+            lightboxVideo.load();
+            lightboxVideo.style.display = 'none';
+            lightboxImg.style.display = 'block';
+            lightboxImg.src = src;
+        }
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightbox();
-                }
-            });
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+});
 
-            // === ЗАПУСК ВИДЕО ПРИ ХОВЕРЕ (без звука) ===
-            const videos = document.querySelectorAll('.case-card-img[src$=".mp4"]');
-            videos.forEach(video => {
+function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+    // остановить видео
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+    setTimeout(() => {
+        if (!lightbox.classList.contains('active')) {
+            lightboxImg.src = '';
+        }
+    }, 300);
+}
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+});
+
+            // Видео: play on hover
+            document.querySelectorAll('.case-card-img[src$=".mp4"]').forEach(video => {
                 video.muted = true;
-
-                video.addEventListener('mouseenter', () => {
-                    video.play().catch(() => {});
-                });
-
-                video.addEventListener('mouseleave', () => {
-                    video.pause();
-                    video.currentTime = 0;
-                });
+                video.addEventListener('mouseenter', () => video.play().catch(() => {}));
+                video.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
             });
-
         });
 
-        // Универсальная функция скролла для любой карусели по её ID
         function scrollCases(direction, containerId) {
             const container = document.getElementById(containerId);
             const scrollAmount = 340;
-            if (direction === 'left') {
-                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-            } else {
-                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
+            container.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
         }
     </script>
-
 
 </body></html>
