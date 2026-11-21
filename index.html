@@ -73,6 +73,32 @@
             margin-bottom: 15px; font-size: 22px; font-weight: 600;
         }
 
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.contact-link {
+    color: #a8b0b5;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168, 176, 181, 0.4);
+    transition: color 0.2s ease, border-color 0.2s ease;
+    word-break: break-word;
+}
+.contact-link:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+}
+		
 .final-muted {
     color: #5c6368;   /* тёмно-серый, темнее основного текста */
     font-size: 14px;  /* опционально: чуть мельче, чтобы читалось как "ремарка" */
@@ -606,7 +632,41 @@
             </div>
         </div>
 
+<!-- ============================ -->
+<!-- ФУТЕР: КОНТАКТЫ + ПЕТ-ПРОЕКТЫ -->
+<!-- ============================ -->
+<div class="container" style="gap: 30px;">
+    <h2 class="h2-title" style="margin-top: 0;"><br>↓ КОНТАКТЫ ↓</h2>
 
+    <div class="footer-grid">
+
+        <div class="scroll-block final-block visible">
+            <div class="block-header">
+                <div class="icon-circle">📇</div>
+                <span>Контакты</span>
+            </div>
+            <ul>
+                <li><strong>Телефон:</strong> <a href="tel:+79217543127" class="contact-link">+7 921 754 31 27</a></li>
+                <li><strong>Почта:</strong> <a href="mailto:emelianoff.ivan@gmail.com" class="contact-link">emelianoff.ivan@gmail.com</a></li>
+                <li><strong>Telegram:</strong> <a href="https://t.me/wgzzik" class="contact-link" target="_blank" rel="noopener">@wgzzik</a></li>
+            </ul>
+        </div>
+
+        <div class="scroll-block final-block visible">
+            <div class="block-header">
+                <div class="icon-circle">🧪</div>
+                <span>Пет-проекты</span>
+            </div>
+            <ul>
+                <li><strong>PushCraft</strong> — наворовал кнопки с завода и продаю: <a href="https://wgzzik.github.io/PushCraft/" class="contact-link" target="_blank" rel="noopener">wgzzik.github.io/PushCraft</a></li>
+                <li><strong>На коленке</strong> — пытался делать консалтинг про Excel: <a href="https://vk.ru/na_kolenke" class="contact-link" target="_blank" rel="noopener">vk.ru/na_kolenke</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+			
         <div class="section-divider" style="margin-top: 30px;"></div>
     </div>
 
